@@ -5,15 +5,21 @@ import { KanbanBoardRoutingModule } from './kanban-board-routing.module';
 import { BoardContainerComponent } from './board-container/board-container.component';
 import { LoginComponent } from './login/login.component';
 import { CardComponent } from './card/card.component';
-
-import {MatCardModule} from '@angular/material';
-
+import { CardListComponent } from './card-list/card-list.component';
+import { StoreModule } from '../store/store.module';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
-  declarations: [BoardContainerComponent, LoginComponent, CardComponent],
+  declarations: [
+    BoardContainerComponent, 
+    LoginComponent, 
+    CardComponent, 
+    CardListComponent, 
+    ToolbarComponent,
+  ],
   imports: [
-    MatCardModule,
     CommonModule,
+    StoreModule,
     KanbanBoardRoutingModule
   ]
 })

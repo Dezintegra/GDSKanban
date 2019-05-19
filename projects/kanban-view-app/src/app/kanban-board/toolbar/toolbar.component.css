@@ -1,0 +1,13 @@
+.toolbar-container{
+    display: flex;
+    flex-direction: row;
+    min-height: 20px;
+    padding: 10px 0px 10px 10px;
+    background-color: rgba(118, 122, 129, 0.5);
+}
+
+.toolbar-text{
+    color:white;
+    font-weight: 800;
+    font-size:20px;
+}

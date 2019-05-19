@@ -1,6 +1,6 @@
-<mat-card>
+<!-- <mat-card>
 
-  <mat-card-title> [{{data[0]}}] {{data[1]}} </mat-card-title>
+  <mat-card-title>  </mat-card-title>
   <mat-card-subtitle> {{data[3]}} </mat-card-subtitle>
   <mat-card-content> {{data[2]}}</mat-card-content>
       
@@ -9,4 +9,16 @@
 
 
 
-</mat-card>
+</mat-card> -->
+
+<div class="list-card-details">
+  <span class="list-card-title">
+      [{{task.id}}] {{task.title}}
+  </span>
+  <span class="list-card-content">
+      {{task.description}}
+  </span>
+  <div class="list-card-members">
+      {{task.responsible}}
+  </div>
+</div>

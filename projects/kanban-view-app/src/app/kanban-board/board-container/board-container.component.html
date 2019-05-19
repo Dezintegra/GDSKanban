@@ -1,5 +1,8 @@
-<app-login (authorized)="getData()"></app-login>
-
-<ng-container *ngFor="let record of data">
-  <app-card [data]="record"></app-card>
-</ng-container>
+<toolbar>
+  <span class="toolbar-text">СККЛ</span>
+  
+  <app-login (authorized)="getData()"></app-login>
+</toolbar>
+<div class="kanban-container" >
+  <card-list *ngFor="let state of states" [state]="state"></card-list>
+</div>

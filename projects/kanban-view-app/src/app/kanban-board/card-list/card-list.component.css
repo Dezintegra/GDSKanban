@@ -1,0 +1,32 @@
+.kanban-list-wrapper{   
+    margin-right: 40px;
+    min-height:90vh;
+}
+
+.kanban-background {
+    padding-top: 4px;
+    background-color:black;
+}
+
+.kanban-list-header{
+    color: white;
+    font-size: 14px;
+    background-color: green;
+    font-weight: 800;
+    margin: 3px 4px 3px 4px;
+    padding: 4px 5px 5px 10px;
+}
+
+.kanban-list {    
+    display: flex;
+    flex-direction: column;
+    width:300px;
+    max-height:89vh;
+    overflow-y: scroll;
+    /* margin-right: 5px; */
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+    width: 0.1em;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy, Input, EventEmitter, Output, ChangeDetectorRef } from '@angular/core';
 
 declare var document: any;
 declare var gapi: any;
@@ -7,7 +7,7 @@ declare var gapi: any;
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit, AfterViewInit {
   
@@ -17,7 +17,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
   @Output()
   public authorized: EventEmitter<any> = new EventEmitter<any>();;
 
-  constructor() { 
+  constructor(
+    private cd: ChangeDetectorRef
+  ) { 
   }
 
 
@@ -42,16 +44,22 @@ export class LoginComponent implements OnInit, AfterViewInit {
       discoveryDocs: this.DISCOVERY_DOCS,
       scope: this.SCOPES
     }).then(() => {
+
       // Listen for sign-in state changes.
       gapi.auth2.getAuthInstance().isSignedIn.listen((isSignedIn)=> {
         console.log('SIGNED IN:', isSignedIn);
         this.signedIn = isSignedIn
-        this.authorized.emit(this.signedIn);
+        if(this.signedIn){
+          this.authorized.emit();
+        }   
+        this.cd.detectChanges();
       });
 
       this.signedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
 
-      this.authorized.emit(this.signedIn);
+      if(this.signedIn){
+        this.authorized.emit();
+      }      
 
     }, function(error) {
       console.error(JSON.stringify(error, null, 2));

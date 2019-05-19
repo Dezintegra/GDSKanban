@@ -1,0 +1,6 @@
+.kanban-container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    overflow: auto;
+}

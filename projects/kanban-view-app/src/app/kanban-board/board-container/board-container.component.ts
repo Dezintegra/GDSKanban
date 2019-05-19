@@ -1,30 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, ChangeDetectorRef } from '@angular/core';
+import { TasksStoreService } from '../../store/services/store.service';
 
 declare var gapi: any;
 
 @Component({
   selector: 'app-board-container',
   templateUrl: './board-container.component.html',
+  styleUrls: ['./board-container.component.css']
 })
 export class BoardContainerComponent implements OnInit {
 
-  public data:string;
+  public states =[
+    "Открыто",
+    "Повторно",
+    "В работе",
+    "Требуется уточнение",
+    "Отложено",
+    "Заблокировано",
+    "Исправлено",
+    "Требуется ревью на DEV",
+    "Перенесено на TEST",
+    "Протестировано ГБК на TEST",
+    "Протестировано ВТБ на TEST",
+    "Перенесено на PROD",
+    "Закрыто",
+    "Снято",
+  ];
 
-  constructor() { }
+  constructor(
+    private tasksStore: TasksStoreService,
+    private cd: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
   }
 
   public getData(){
-    this.listMajors();
-  }
-
-  private listMajors() {
     gapi.client.sheets.spreadsheets.values.get({
       spreadsheetId: '1AlihhnzwKhJLWxeCYY3eTwBfozpUGkS_VeDJk6AZrco',
-      range: 'Рефакторинг!A3:I200',
+      range: 'Замечания / вопросы!A3:I2000',
     }).then((response) => {
-      this.data = response.result.values;
+      this.tasksStore.updateTasks(response.result.values);
+
+      this.cd.detectChanges();
     });
   }
+
 }
