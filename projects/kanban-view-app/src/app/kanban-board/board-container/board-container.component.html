@@ -1,0 +1,5 @@
+<app-login (authorized)="getData()"></app-login>
+
+<ng-container *ngFor="let record of data">
+  <app-card [data]="record"></app-card>
+</ng-container>
