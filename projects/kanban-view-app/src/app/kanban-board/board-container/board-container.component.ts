@@ -1,14 +1,16 @@
-import { Component, OnInit, Output, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Output, ChangeDetectorRef, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import { TasksStoreService } from '../../store/services/store.service';
 
-declare var gapi: any;
 
 @Component({
   selector: 'app-board-container',
   templateUrl: './board-container.component.html',
-  styleUrls: ['./board-container.component.css']
+  styleUrls: ['./board-container.component.css'],
+  changeDetection: ChangeDetectionStrategy.Default
 })
-export class BoardContainerComponent implements OnInit {
+export class BoardContainerComponent implements OnInit, AfterViewInit {
+  
+  
 
   public states =[
     "Открыто",
@@ -35,15 +37,17 @@ export class BoardContainerComponent implements OnInit {
   ngOnInit() {
   }
 
-  public getData(){
-    gapi.client.sheets.spreadsheets.values.get({
-      spreadsheetId: '1AlihhnzwKhJLWxeCYY3eTwBfozpUGkS_VeDJk6AZrco',
-      range: 'Замечания / вопросы!A3:I2000',
-    }).then((response) => {
-      this.tasksStore.updateTasks(response.result.values);
+  ngAfterViewInit(): void {
+    
+  }
 
-      this.cd.detectChanges();
-    });
+  public userAuthentificated(){
+
+    this.tasksStore.setAuthentificated();
+
+    this.tasksStore.getData();
+
+    this.cd.detectChanges();
   }
 
 }

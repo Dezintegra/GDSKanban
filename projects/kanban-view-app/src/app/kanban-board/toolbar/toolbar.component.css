@@ -8,6 +8,13 @@
 
 .toolbar-text{
     color:white;
+}
+
+.toolbar-logo{
     font-weight: 800;
     font-size:20px;
+}
+
+.toolbar-item {
+    padding-left: 25px;
 }

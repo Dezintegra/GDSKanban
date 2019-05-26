@@ -1,7 +1,12 @@
 <toolbar>
-  <span class="toolbar-text">СККЛ</span>
+  <span class="toolbar-logo toolbar-text toolbar-item">СККЛ</span>
   
-  <app-login (authorized)="getData()"></app-login>
+  <app-login (authorized)="userAuthentificated()"></app-login>
+
+  <div class="toolbar-item">
+    <span class="toolbar-text">Ответсвенный: </span>
+    <app-responsible-filter></app-responsible-filter>
+  </div>
 </toolbar>
 <div class="kanban-container" >
   <card-list *ngFor="let state of states" [state]="state"></card-list>
