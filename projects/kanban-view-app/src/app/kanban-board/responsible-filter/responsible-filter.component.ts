@@ -12,7 +12,7 @@ export class ResponsibleFilterComponent implements OnInit {
 
   private responsibles: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
 
-  public responsibleMask:string;
+  public responsibleMask:string[];
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -28,6 +28,7 @@ export class ResponsibleFilterComponent implements OnInit {
   }
 
   public inputChanged(event){
+    console.log("triggered", this.responsibleMask);
     this.tasksStore.setResponsibleFilter(this.responsibleMask);
   }
 

@@ -1,3 +1,9 @@
-<select [(ngModel)]="responsibleMask" (change)="inputChanged($event)" >
+<!-- <select [(ngModel)]="responsibleMask" (change)="inputChanged($event)" >
     <option *ngFor="let responsible of responsibles">{{responsible}}</option>
-</select>
+</select> -->
+
+<span>{{responsibleMask}}</span>
+
+<mat-select multiple [(value)]="responsibleMask" (selectionChange)="inputChanged($event)">
+    <mat-option value="{{responsible}}" *ngFor="let responsible of responsibles">{{responsible}}</mat-option>
+</mat-select>

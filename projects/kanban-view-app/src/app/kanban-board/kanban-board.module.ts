@@ -10,6 +10,7 @@ import { CardListComponent } from './card-list/card-list.component';
 import { StoreModule } from '../store/store.module';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ResponsibleFilterComponent } from './responsible-filter/responsible-filter.component';
+import { AngularMaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ResponsibleFilterComponent } from './responsible-filter/responsible-fil
     ResponsibleFilterComponent,
   ],
   imports: [
+    AngularMaterialModule,
     FormsModule,
     CommonModule,
     StoreModule,

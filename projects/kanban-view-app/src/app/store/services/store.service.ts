@@ -12,7 +12,7 @@ export class TasksStoreService {
 
   private userIsAuthentificated = false;
   private allTasks: Map<string, Task>;
-  private responsibleFilterMask: string;
+  private responsibleFilterMask: string[] = [];
 
   public responsibles$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
   public tasksUpdated$: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(null);
@@ -27,7 +27,7 @@ export class TasksStoreService {
       });
   }
 
-  public setResponsibleFilter(responsibleFilterMask: string) {
+  public setResponsibleFilter(responsibleFilterMask: string[]) {
     this.responsibleFilterMask = responsibleFilterMask;
     this.pushFilteredDate();
 
@@ -67,7 +67,16 @@ export class TasksStoreService {
 
       if(!this.responsibleFilterMask) resultSet.push(task);
       
-      const contains = task.responsible.indexOf(this.responsibleFilterMask) > -1
+      //const contains = task.responsible.indexOf(this.responsibleFilterMask) > -1
+      let contains = this.responsibleFilterMask.length == 0;
+
+      this.responsibleFilterMask.forEach( responsible => {
+        if(contains) return;
+
+        if( task.responsible.indexOf(responsible) > -1){
+          contains = true;
+        }
+      })
 
       if(contains){
         resultSet.push(task);
