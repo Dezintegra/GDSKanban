@@ -14,6 +14,7 @@ export class TasksStoreService {
   private allTasks: Map<string, Task>;
   private responsibleFilterMask: string;
 
+  public responsibles$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
   public tasksUpdated$: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(null);
   private timerSubject$ = timer(0,30000);
 
@@ -82,6 +83,16 @@ export class TasksStoreService {
       range: 'Замечания / вопросы!A3:I2000',
     }).then((response) => {
       this.updateTasks(response.result.values);
+    });
+  }
+
+  public getResponsibles(){
+    gapi.client.sheets.spreadsheets.values.get({
+      spreadsheetId: '1AlihhnzwKhJLWxeCYY3eTwBfozpUGkS_VeDJk6AZrco',
+      range: 'Выпадающие списки!C2:C30',
+    }).then((response) => {
+      console.log("responsibles", response.result.values)
+      this.responsibles$.next(response.result.values);
     });
   }
 }

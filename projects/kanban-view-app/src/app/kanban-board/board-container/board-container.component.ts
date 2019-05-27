@@ -47,6 +47,8 @@ export class BoardContainerComponent implements OnInit, AfterViewInit {
 
     this.tasksStore.getData();
 
+    this.tasksStore.getResponsibles();
+
     this.cd.detectChanges();
   }
 

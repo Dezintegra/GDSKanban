@@ -1,1 +1,3 @@
-<input [(ngModel)]="responsibleMask" (keyup)="inputChanged($event)">
+<select [(ngModel)]="responsibleMask" (change)="inputChanged($event)" >
+    <option *ngFor="let responsible of responsibles">{{responsible}}</option>
+</select>
