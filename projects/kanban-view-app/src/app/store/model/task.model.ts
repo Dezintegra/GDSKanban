@@ -1,5 +1,7 @@
 export class Task {
 
+    public rowNumber: number;
+
     public id:string;
 
     public state: string;

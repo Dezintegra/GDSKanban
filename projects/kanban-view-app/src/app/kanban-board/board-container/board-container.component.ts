@@ -6,7 +6,7 @@ import { TasksStoreService } from '../../store/services/store.service';
   selector: 'app-board-container',
   templateUrl: './board-container.component.html',
   styleUrls: ['./board-container.component.css'],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BoardContainerComponent implements OnInit, AfterViewInit {
   
@@ -35,6 +35,7 @@ export class BoardContainerComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
+    
   }
 
   ngAfterViewInit(): void {
@@ -48,6 +49,8 @@ export class BoardContainerComponent implements OnInit, AfterViewInit {
     this.tasksStore.getData();
 
     this.tasksStore.getResponsibles();
+
+    this.tasksStore.getFields();
 
     this.cd.detectChanges();
   }

@@ -1,0 +1,15 @@
+<ng-container *ngIf="dialogIsVisible">
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span (click)="closeDialog()" class="close">&times;</span>
+
+      <ng-container *ngFor="let column of columns; let i = index">
+        <h4>{{column}}</h4>
+        {{task.fieldsData[i]}}
+      </ng-container>
+    </div>
+
+  </div>
+<ng-container>

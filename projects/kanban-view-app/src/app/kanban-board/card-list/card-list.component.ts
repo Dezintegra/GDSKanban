@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit, Output, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, Output, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { Task } from '../../store/model/task.model';
 import { TasksStoreService } from '../../store/services/store.service';
 
@@ -7,7 +7,8 @@ import { filter, map } from 'rxjs/operators'
 @Component({
   selector: 'card-list',
   templateUrl: './card-list.component.html',
-  styleUrls: ['./card-list.component.css']
+  styleUrls: ['./card-list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardListComponent implements AfterViewInit {
   

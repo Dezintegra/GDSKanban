@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule }   from '@angular/forms';
 
@@ -11,8 +11,9 @@ import { StoreModule } from '../store/store.module';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ResponsibleFilterComponent } from './responsible-filter/responsible-filter.component';
 import { AngularMaterialModule } from './material.module';
-import { DialogOverviewExample } from './task-card/task-card.component';
-import { TaskCardDialogComponent } from './task-card/task-card-dialog.component';
+import { TaskEditFormComponent } from './task-card/task-card.component';
+
+
 
 @NgModule({
   declarations: [
@@ -22,10 +23,8 @@ import { TaskCardDialogComponent } from './task-card/task-card-dialog.component'
     CardListComponent, 
     ToolbarComponent, 
     ResponsibleFilterComponent,
-    DialogOverviewExample,
-    TaskCardDialogComponent
+    TaskEditFormComponent
   ],
-  entryComponents:[TaskCardDialogComponent],
   imports: [
     AngularMaterialModule,
     FormsModule,

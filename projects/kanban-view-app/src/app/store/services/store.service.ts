@@ -15,6 +15,7 @@ export class TasksStoreService {
   private responsibleFilterMask: string[] = [];
 
   public responsibles$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+  public fields$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
   public tasksForEdit$: BehaviorSubject<Task> = new BehaviorSubject<Task>(null);
   public tasksUpdated$: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(null);
@@ -47,13 +48,14 @@ export class TasksStoreService {
     this.userIsAuthentificated = true;
   }
 
-  public updateTasks(tasks: any[]) {
+  public updateTasks(tasks: any[], startRowNumber:number) {
 
     // this.allTasks = 
     
-    tasks.forEach(task => {
+    tasks.forEach((task, index) => {
       const kanbanTask = new Task();
 
+      kanbanTask.rowNumber = startRowNumber+index;
       kanbanTask.id = task[0];
       kanbanTask.title = task[1];
       kanbanTask.description = task[2];
@@ -101,7 +103,7 @@ export class TasksStoreService {
       spreadsheetId: '1AlihhnzwKhJLWxeCYY3eTwBfozpUGkS_VeDJk6AZrco',
       range: 'Замечания / вопросы!A3:Z3000',
     }).then((response) => {
-      this.updateTasks(response.result.values);
+      this.updateTasks(response.result.values, 3);
     });
   }
 
@@ -112,6 +114,15 @@ export class TasksStoreService {
     }).then((response) => {
       const responsibleList = response.result.values.filter( _ => !!_ );
       this.responsibles$.next(responsibleList);
+    });
+  }
+
+  public getFields(){
+    gapi.client.sheets.spreadsheets.values.get({
+      spreadsheetId: '1AlihhnzwKhJLWxeCYY3eTwBfozpUGkS_VeDJk6AZrco',
+      range: 'Замечания / вопросы!A1:Z1',
+    }).then((fields) => {
+      this.fields$.next( fields.result.values[0]);
     });
   }
 }
