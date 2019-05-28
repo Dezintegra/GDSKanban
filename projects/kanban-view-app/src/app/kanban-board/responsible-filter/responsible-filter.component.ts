@@ -9,7 +9,7 @@ import { filter } from 'rxjs/operators';
 })
 export class ResponsibleFilterComponent implements OnInit {
 
-  private responsibles: string[];
+  public responsibles: string[];
 
   public responsibleMask:string[];
 

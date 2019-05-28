@@ -3,7 +3,7 @@ import { TasksStoreService } from '../../store/services/store.service';
 
 @Component({
   selector: 'app-taskNumber-filter',
-  template: `<input [(ngModel)]="taskNumber" (keyup)="inputChanged()"/>`
+  template: `<input [(ngModel)]="taskNumber" (keyup)="inputChanged($event)"/>`
 })
 export class TaskNumberFilterComponent implements OnInit {
 
