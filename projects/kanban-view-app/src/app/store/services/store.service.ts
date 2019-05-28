@@ -89,7 +89,7 @@ export class TasksStoreService {
   public getData(){
     gapi.client.sheets.spreadsheets.values.get({
       spreadsheetId: '1AlihhnzwKhJLWxeCYY3eTwBfozpUGkS_VeDJk6AZrco',
-      range: 'Замечания / вопросы!A3:I2000',
+      range: 'Замечания / вопросы!A3:Z3000',
     }).then((response) => {
       this.updateTasks(response.result.values);
     });
@@ -100,8 +100,8 @@ export class TasksStoreService {
       spreadsheetId: '1AlihhnzwKhJLWxeCYY3eTwBfozpUGkS_VeDJk6AZrco',
       range: 'Выпадающие списки!C2:C30',
     }).then((response) => {
-      console.log("responsibles", response.result.values)
-      this.responsibles$.next(response.result.values);
+      const responsibleList = response.result.values.filter( _ => !!_ );
+      this.responsibles$.next(responsibleList);
     });
   }
 }
