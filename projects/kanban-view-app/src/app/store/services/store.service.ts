@@ -15,6 +15,8 @@ export class TasksStoreService {
   private responsibleFilterMask: string[] = [];
 
   public responsibles$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+
+  public tasksForEdit$: BehaviorSubject<Task> = new BehaviorSubject<Task>(null);
   public tasksUpdated$: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(null);
   private timerSubject$ = timer(0,30000);
 
@@ -25,6 +27,14 @@ export class TasksStoreService {
       .subscribe( () => {
         this.getData();
       });
+  }
+
+  public editTask(task:Task){
+    this.tasksForEdit$.next(task);
+  }
+
+  public updateTask(task:Task){
+    console.log(task);
   }
 
   public setResponsibleFilter(responsibleFilterMask: string[]) {

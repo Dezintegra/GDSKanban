@@ -11,6 +11,8 @@ import { StoreModule } from '../store/store.module';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ResponsibleFilterComponent } from './responsible-filter/responsible-filter.component';
 import { AngularMaterialModule } from './material.module';
+import { DialogOverviewExample } from './task-card/task-card.component';
+import { TaskCardDialogComponent } from './task-card/task-card-dialog.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,10 @@ import { AngularMaterialModule } from './material.module';
     CardListComponent, 
     ToolbarComponent, 
     ResponsibleFilterComponent,
+    DialogOverviewExample,
+    TaskCardDialogComponent
   ],
+  entryComponents:[TaskCardDialogComponent],
   imports: [
     AngularMaterialModule,
     FormsModule,
