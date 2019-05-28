@@ -12,6 +12,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ResponsibleFilterComponent } from './responsible-filter/responsible-filter.component';
 import { AngularMaterialModule } from './material.module';
 import { TaskEditFormComponent } from './task-card/task-card.component';
+import { TaskNumberFilterComponent } from './task-number-filter/task-number-filter.component';
 
 
 
@@ -23,7 +24,8 @@ import { TaskEditFormComponent } from './task-card/task-card.component';
     CardListComponent, 
     ToolbarComponent, 
     ResponsibleFilterComponent,
-    TaskEditFormComponent
+    TaskEditFormComponent,
+    TaskNumberFilterComponent
   ],
   imports: [
     AngularMaterialModule,

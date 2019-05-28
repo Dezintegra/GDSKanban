@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { TasksStoreService } from '../../store/services/store.service';
-import { FormControl } from '@angular/forms';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -10,7 +9,7 @@ import { filter } from 'rxjs/operators';
 })
 export class ResponsibleFilterComponent implements OnInit {
 
-  private responsibles: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  private responsibles: string[];
 
   public responsibleMask:string[];
 
