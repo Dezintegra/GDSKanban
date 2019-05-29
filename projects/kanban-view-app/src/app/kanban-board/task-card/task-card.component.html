@@ -1,15 +1,32 @@
 <ng-container *ngIf="dialogIsVisible">
-  <div id="myModal" class="modal">
+  <div id="taskCardModalDialog" class="modal">
 
     <!-- Modal content -->
     <div class="modal-content">
-      <span (click)="closeDialog()" class="close">&times;</span>
+      <div class="modal-header">
+        [{{task.id}}] {{task.title}}
+        <span (click)="closeDialog()" class="close">&times;</span>
+      </div>
 
-      <ng-container *ngFor="let column of columns; let i = index">
-        <h4>{{column}}</h4>
-        {{task.fieldsData[i]}}
-      </ng-container>
+      <div class="modal-toolbar">
+        <button>Иправлено</button>
+        <button>В работе</button>
+        <button>Перенесено на тест</button>
+      </div>
+
+      <div class="modal-body">
+        <mat-form-field class="example-full-width">
+          <mat-label>{{columns[4]}}</mat-label>
+          <textarea matInput [(ngModel)]="task.description"></textarea>
+        </mat-form-field>
+
+        <ng-container *ngFor="let column of columns; let i = index">
+          <h4>{{column}}</h4>
+          {{task.fieldsData[i]}}
+        </ng-container>
+      </div>
+
     </div>
 
   </div>
-<ng-container>
+  <ng-container>
